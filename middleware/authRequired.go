@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	"go-portal/src/globals"
+	"go-portal/globals"
 
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
@@ -15,7 +15,7 @@ func AuthRequired(c *gin.Context) {
 	user := session.Get(globals.Userkey)
 	if user == nil {
 		log.Println("User not logged in")
-		c.Redirect(http.StatusMovedPermanently, "/login")
+		c.Redirect(http.StatusFound, "/login")
 		c.Abort()
 		return
 	}
